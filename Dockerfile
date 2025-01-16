@@ -35,5 +35,6 @@ SHELL [ "/usr/bin/scl", "enable", "devtoolset-11" ]
 RUN cd /home/perl-5.40.0 && ./Configure -des -Dprefix=/usr/local/localperl && make -j6 && make -j6 test && make -j6 install && \
     ln -s /usr/local/localperl/bin/perl /usr/bin/perl && \
     cd /home/perl-5.40.0 && make install && cd /home/openssl-1.1.1q && ./config shared && make && make install && \
-    ldd /usr/local/bin/openssl
+    ldd /usr/local/bin/openssl 
+ENV LD_LIBRARY_PATH /usr/local/lib64:$LD_LIBRARY_PATH
 
